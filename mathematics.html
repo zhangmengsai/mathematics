@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学</title>
+
+     <style>
+         .btn {
+             height: 50px;
+             width: 200px;
+             font-size: 30px;
+         }
+
+     </style>
+</head>
+<script>
+    function add() {
+        deleteDiv();
+        var i = 0;
+        for (i = 1; i < 10; i++) {
+            var fist = fullColose(1,10);
+            var two = fullColose(1,10);
+            var sss = fist.toString() + '+' + two.toString() + '=' + ' ';
+            var myDiv = document.createElement("div");
+            myDiv.style.fontSize = '50px';
+            myDiv.style.letterSpacing = '20px';
+            var mytext = document.createTextNode(sss);
+            myDiv.appendChild(mytext);
+            document.getElementById('divID').appendChild(myDiv);
+        }
+    }
+        function jianfa() {
+            deleteDiv();
+            var i = 0;
+            for (i = 1;i<10;i++){
+                var fist  = fullColose(5,20);
+                var two =  fullColose(1,fist);
+                var sss =  fist.toString() +'-'+ two.toString()+'=' + ' ';
+                var myDiv = document.createElement("div");
+                myDiv.style.fontSize = '40px';
+                myDiv.style.letterSpacing = '20px';
+                var mytext = document.createTextNode(sss);
+                myDiv.appendChild(mytext);
+                document.getElementById('divID').appendChild(myDiv);
+            }
+        }
+        function xianglinshu() {
+            deleteDiv();
+            var i = 0;
+            for (i = 1; i < 10; i++) {
+                var fist = fullColose(3,97);
+                var str;
+                if (fist%3 == 0){
+                    str = fist + '(   )'+'(   )';
+                }else if (fist%3==1){
+                    str =  '(   )' + fist +'(   )';
+                } else if(fist%3 == 2){
+                    str =  '(   )' + '(   )' +fist;
+                }
+                var myDiv = document.createElement("div");
+                myDiv.style.fontSize = '40px';
+                myDiv.style.wordSpacing = '40px';
+                var mytext = document.createTextNode(str);
+                myDiv.appendChild(mytext);
+                document.getElementById('divID').appendChild(myDiv);
+            }
+        }
+        function deleteDiv() {
+            var divClass =  document.getElementById('divID');
+            if(divClass){
+               divClass.remove()
+            }
+            var myDiv = document.createElement("div");
+               myDiv.id = 'divID';
+               document.body.append(myDiv);
+        }
+        //n-m 随机数
+        function fullColose(n,m) {
+            var result = Math.round(Math.random()*(m+1-n)+n);
+            while (result>m){
+                result = Math.round(Math.random()*(m+1-n)+n);
+            }
+            return result;
+        }
+
+</script>
+<body>
+<button class="btn" type="button " onclick="add()">加法</button>
+<button class="btn" type="button " onclick="jianfa()">减法</button>
+<button class="btn" type="button " onclick="xianglinshu() ">相邻数</button>
+<!--<button class="btn" type="button " onclick="deleteDiv()">清除</button>-->
+<div id="divID"></div>
+</body>
+</html>
